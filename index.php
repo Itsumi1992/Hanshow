@@ -6,7 +6,10 @@
 	<link rel="stylesheet" href="css/bootstrap.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="/Hanshow/js/bootstrap.js"></script>
-	<?php include 'config.php'; ?>
+	<?php 
+	include 'config.php'; 
+	include (ROOT_DIR . '/function/dbconnect.php');
+	?>
   </head>
   
   <body>
@@ -16,16 +19,9 @@
 	
   <!--inhoud-->
   	<?php
-	
-$servername = "localhost";
-$username = "root";
-$password = "usbw";
-$dbname = "test";
-$conn = new mysqli($servername, $username, $password, $dbname);
+
 // Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-} 
+DBConnect();
 
 $sql = "SELECT omschrijving FROM omschrijving";
 $result = $conn->query($sql);
